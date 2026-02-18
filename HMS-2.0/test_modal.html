@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test Modal</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                console.log("DOM loaded");
+
+                // Test if elements exist
+                const modal = document.getElementById("collectionModal");
+                const discountAmountElement =
+                    document.getElementById("discountAmount");
+                const applyDiscountCheckbox =
+                    document.getElementById("applyDiscount");
+
+                console.log("Modal:", modal);
+                console.log("Discount Amount Element:", discountAmountElement);
+                console.log("Apply Discount Checkbox:", applyDiscountCheckbox);
+
+                // Test function
+                function calculateDiscount() {
+                    return 0;
+                }
+
+                // This should not cause an error now
+                const maxAllowedAmount = 1000 - calculateDiscount();
+                console.log("Max allowed amount:", maxAllowedAmount);
+            });
+        </script>
+    </head>
+    <body>
+        <div id="collectionModal">Modal</div>
+        <div id="discountAmount">0.00</div>
+        <input type="checkbox" id="applyDiscount" />
+        <p>Check console for test results</p>
+    </body>
+</html>

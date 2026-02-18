@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="title" content="InfyBonus" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Prevent scrolling on all devices */
+            html {
+                overflow: hidden;
+                height: 100vh;
+                width: 100vw;
+                position: fixed;
+                -webkit-overflow-scrolling: none;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+
+            /* Disable touch scrolling on mobile */
+            body {
+                touch-action: none;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                overscroll-behavior: none;
+            }
+
+            html,
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                height: 100vh;
+                width: 100vw;
+                max-height: 100vh;
+                max-width: 100vw;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                overflow: hidden;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            /* Animated background elements */
+            body::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, 0.1) 1px,
+                    transparent 1px
+                );
+                background-size: 50px 50px;
+                animation: float 20s ease-in-out infinite;
+                z-index: 1;
+            }
+
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+                50% {
+                    transform: translateY(-20px) rotate(180deg);
+                }
+            }
+
+            .offline_container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100vw;
+                max-height: 100vh;
+                max-width: 100vw;
+                padding: 2rem;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            .wifi_icon {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 2rem;
+                position: relative;
+                animation: pulse 2s ease-in-out infinite;
+            }
+
+            .wifi_icon::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                border: 4px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .wifi_icon::after {
+                content: "📶";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 3rem;
+                opacity: 0.3;
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                }
+                50% {
+                    transform: scale(1.1);
+                    opacity: 1;
+                }
+            }
+
+            .error_heading {
+                font-size: 3.5rem;
+                font-weight: 800;
+                margin-bottom: 1rem;
+                color: transparent;
+                background: linear-gradient(45deg, #ffffff, #f0f0f0, #ffffff);
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                -moz-background-clip: text;
+                background-clip: text;
+                animation: shimmer 3s ease-in-out infinite;
+                text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            @keyframes shimmer {
+                0%,
+                100% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+            }
+
+            .error_message {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.9);
+                margin-bottom: 1rem;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+
+            .error_paragraph {
+                font-size: 1.1rem;
+                color: rgba(255, 255, 255, 0.8);
+                margin-bottom: 2.5rem;
+                line-height: 1.6;
+                max-width: 500px;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            .error_btn {
+                display: inline-block;
+                padding: 1rem 2.5rem;
+                background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+                color: white;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: 600;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                box-shadow: 0 8px 25px rgba(238, 90, 36, 0.3);
+                border: none;
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .error_btn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.2),
+                    transparent
+                );
+                transition: left 0.5s;
+            }
+
+            .error_btn:hover::before {
+                left: 100%;
+            }
+
+            .error_btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 35px rgba(238, 90, 36, 0.4);
+                background: linear-gradient(45deg, #ff5252, #d63031);
+            }
+
+            .error_btn:active {
+                transform: translateY(-1px);
+                box-shadow: 0 6px 20px rgba(238, 90, 36, 0.3);
+            }
+
+            /* Mobile Responsive Design */
+            @media (max-width: 768px) {
+                .offline_container {
+                    padding: 1rem;
+                    justify-content: center;
+                    gap: 0.5rem;
+                }
+
+                .wifi_icon {
+                    width: 70px;
+                    height: 70px;
+                    margin-bottom: 1rem;
+                    flex-shrink: 0;
+                }
+
+                .wifi_icon::after {
+                    font-size: 1.8rem;
+                }
+
+                .error_heading {
+                    font-size: 2.2rem;
+                    margin-bottom: 0.5rem;
+                    flex-shrink: 0;
+                }
+
+                .error_message {
+                    font-size: 1.2rem;
+                    margin-bottom: 0.5rem;
+                    flex-shrink: 0;
+                }
+
+                .error_paragraph {
+                    font-size: 0.95rem;
+                    margin-bottom: 1.5rem;
+                    padding: 0 1rem;
+                    line-height: 1.4;
+                    flex-shrink: 0;
+                }
+
+                .error_btn {
+                    padding: 0.8rem 1.8rem;
+                    font-size: 0.95rem;
+                    flex-shrink: 0;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .offline_container {
+                    padding: 0.8rem;
+                    gap: 0.3rem;
+                }
+
+                .wifi_icon {
+                    width: 50px;
+                    height: 50px;
+                    margin-bottom: 0.8rem;
+                    flex-shrink: 0;
+                }
+
+                .wifi_icon::after {
+                    font-size: 1.3rem;
+                }
+
+                .error_heading {
+                    font-size: 1.8rem;
+                    margin-bottom: 0.3rem;
+                    flex-shrink: 0;
+                }
+
+                .error_message {
+                    font-size: 1rem;
+                    margin-bottom: 0.3rem;
+                    flex-shrink: 0;
+                }
+
+                .error_paragraph {
+                    font-size: 0.85rem;
+                    margin-bottom: 1rem;
+                    padding: 0 0.5rem;
+                    line-height: 1.3;
+                    flex-shrink: 0;
+                }
+
+                .error_btn {
+                    padding: 0.7rem 1.5rem;
+                    font-size: 0.9rem;
+                    flex-shrink: 0;
+                }
+            }
+
+            @media (max-width: 320px) {
+                .offline_container {
+                    padding: 0.5rem;
+                    gap: 0.2rem;
+                }
+
+                .wifi_icon {
+                    width: 40px;
+                    height: 40px;
+                    margin-bottom: 0.5rem;
+                }
+
+                .wifi_icon::after {
+                    font-size: 1.1rem;
+                }
+
+                .error_heading {
+                    font-size: 1.5rem;
+                    margin-bottom: 0.2rem;
+                }
+
+                .error_message {
+                    font-size: 0.9rem;
+                    margin-bottom: 0.2rem;
+                }
+
+                .error_paragraph {
+                    font-size: 0.8rem;
+                    margin-bottom: 0.8rem;
+                    line-height: 1.2;
+                }
+
+                .error_btn {
+                    padding: 0.6rem 1.3rem;
+                    font-size: 0.85rem;
+                }
+            }
+
+            /* Large screens */
+            @media (min-width: 1200px) {
+                .error_heading {
+                    font-size: 4rem;
+                }
+
+                .error_message {
+                    font-size: 1.8rem;
+                }
+
+                .error_paragraph {
+                    font-size: 1.2rem;
+                }
+            }
+
+            /* Landscape orientation on mobile */
+            @media (max-height: 500px) and (orientation: landscape) {
+                .offline_container {
+                    padding: 0.5rem;
+                    gap: 0.2rem;
+                    justify-content: center;
+                }
+
+                .wifi_icon {
+                    width: 35px;
+                    height: 35px;
+                    margin-bottom: 0.3rem;
+                    flex-shrink: 0;
+                }
+
+                .wifi_icon::after {
+                    font-size: 1rem;
+                }
+
+                .error_heading {
+                    font-size: 1.4rem;
+                    margin-bottom: 0.2rem;
+                    flex-shrink: 0;
+                }
+
+                .error_message {
+                    font-size: 0.9rem;
+                    margin-bottom: 0.2rem;
+                    flex-shrink: 0;
+                }
+
+                .error_paragraph {
+                    font-size: 0.75rem;
+                    margin-bottom: 0.5rem;
+                    line-height: 1.2;
+                    flex-shrink: 0;
+                }
+
+                .error_btn {
+                    padding: 0.5rem 1.2rem;
+                    font-size: 0.8rem;
+                    flex-shrink: 0;
+                }
+            }
+
+            /* Extra small height devices */
+            @media (max-height: 400px) {
+                .offline_container {
+                    padding: 0.3rem;
+                    gap: 0.1rem;
+                }
+
+                .wifi_icon {
+                    width: 30px;
+                    height: 30px;
+                    margin-bottom: 0.2rem;
+                }
+
+                .wifi_icon::after {
+                    font-size: 0.9rem;
+                }
+
+                .error_heading {
+                    font-size: 1.2rem;
+                    margin-bottom: 0.1rem;
+                }
+
+                .error_message {
+                    font-size: 0.8rem;
+                    margin-bottom: 0.1rem;
+                }
+
+                .error_paragraph {
+                    font-size: 0.7rem;
+                    margin-bottom: 0.3rem;
+                    line-height: 1.1;
+                }
+
+                .error_btn {
+                    padding: 0.4rem 1rem;
+                    font-size: 0.75rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="offline_container">
+            <div class="wifi_icon"></div>
+            <h1 class="error_heading">Oops!</h1>
+            <h2 class="error_message">You're offline</h2>
+            <p class="error_paragraph">
+                It looks like you've lost your internet connection. Please check
+                your network settings and try again.
+            </p>
+            <a href="/" class="error_btn">Try Again</a>
+        </div>
+    </body>
+</html>
