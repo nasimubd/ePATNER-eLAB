@@ -1,0 +1,31 @@
+branches: ["main"]
+tagFormat: "v${version}"
+
+plugins:
+  - - "@semantic-release/commit-analyzer"
+    - preset: conventionalcommits
+      releaseRules:
+        - { type: "chore", scope: "release", release: false }
+        - { type: "chore", scope: "deps", release: false }
+        - { type: "chore", scope: "ci", release: false }
+        - { type: "docs", release: "patch" }
+        - { type: "refactor", release: "patch" }
+        - { type: "perf", release: "patch" }
+        - { type: "test", release: "patch" }
+        - { type: "build", release: "patch" }
+        - { type: "ci", release: "patch" }
+        - { type: "chore", release: "patch" }
+        - { type: "fix", release: "patch" }
+        - { type: "feat", release: "minor" }
+        - { breaking: true, release: "major" }
+  - - "@semantic-release/release-notes-generator"
+    - preset: conventionalcommits
+  - "@semantic-release/changelog"
+  - - "@semantic-release/exec"
+    - prepareCmd: "node scripts/release/update-readme-version.mjs ${nextRelease.version}"
+  - - "@semantic-release/git"
+    - assets:
+        - CHANGELOG.md
+        - README.md
+      message: "chore(release): ${nextRelease.version} [skip ci]"
+  - "@semantic-release/github"
