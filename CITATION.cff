@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use eLAB, please cite it as below."
+title: "eLAB: Open-source healthcare operations platform for hospitals and clinics"
+type: software
+version: "0.1.0"
+date-released: "2026-08-24"
+license: MIT
+repository-code: "https://github.com/nasimubd/ePATNER-eLAB"
+url: "https://github.com/nasimubd/ePATNER-eLAB"
+
+authors:
+  - family-names: "NASIM"
+    given-names: "MD"
+
+keywords:
+  - healthcare
+  - hospital
+  - clinic
+  - laboratory
+  - billing
+  - patient-management
+  - Laravel
+
+copyright:
+  - "2026 MD NASIM"
