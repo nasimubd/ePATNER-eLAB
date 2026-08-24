@@ -1,12 +1,12 @@
 cff-version: 1.2.0
-message: "If you use eLAB, please cite it as below."
-title: "eLAB: Open-source healthcare operations platform for hospitals and clinics"
+message: "If you use PulseForge, please cite it as below."
+title: "PulseForge: Open-source healthcare operations platform for hospitals and clinics"
 type: software
 version: "0.1.0"
 date-released: "2026-08-24"
 license: MIT
-repository-code: "https://github.com/nasimubd/ePATNER-eLAB"
-url: "https://github.com/nasimubd/ePATNER-eLAB"
+repository-code: "https://github.com/nasimubd/PulseForge"
+url: "https://github.com/nasimubd/PulseForge"
 
 authors:
   - family-names: "NASIM"

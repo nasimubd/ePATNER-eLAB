@@ -1,4 +1,4 @@
-# eLAB
+# PulseForge
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20.svg)
@@ -7,18 +7,18 @@
 
 **Open-source healthcare operations platform for hospitals, clinics, diagnostic centres, and other care facilities.**
 
-eLAB brings together patient administration, clinician scheduling, laboratory workflows, medical billing, financial ledgers, ward and operating-theatre bookings, and operational administration in one Laravel application.
+PulseForge brings together patient administration, clinician scheduling, laboratory workflows, medical billing, financial ledgers, ward and operating-theatre bookings, and operational administration in one Laravel application.
 
 Developed and maintained by [MD NASIM](https://github.com/nasimubd).
 
 ---
 
-## Why eLAB
+## Why PulseForge
 
-Healthcare teams need patient, diagnostic, financial, and facility workflows to share the same operational context. eLAB provides a connected model instead of isolated registers and manual reconciliation.
+Healthcare teams need patient, diagnostic, financial, and facility workflows to share the same operational context. PulseForge provides a connected model instead of isolated registers and manual reconciliation.
 
 ```text
-                          eLAB
+                       PulseForge
                             │
         ┌───────────────────┼───────────────────┐
         │                   │                   │
@@ -113,7 +113,7 @@ Business / Facility
 
 ## Role model
 
-eLAB separates platform administration from facility operations through Laravel middleware and Spatie Laravel Permission.
+PulseForge separates platform administration from facility operations through Laravel middleware and Spatie Laravel Permission.
 
 ```text
 Super Admin
@@ -206,8 +206,8 @@ routes/
 ### Setup
 
 ```bash
-git clone https://github.com/nasimubd/ePATNER-eLAB.git
-cd ePATNER-eLAB
+git clone https://github.com/nasimubd/PulseForge.git
+cd PulseForge
 composer install
 npm install
 cp .env.example .env
@@ -246,7 +246,7 @@ php artisan test
 
 ## Project status
 
-**eLAB v0.1.0** documents the current open-source baseline. It includes healthcare-facility administration, patient and doctor management, scheduling, laboratory reporting, billing and ledger workflows, ward and operating-theatre booking, subscriptions, and print controls.
+**PulseForge v0.1.0** documents the current open-source baseline. It includes healthcare-facility administration, patient and doctor management, scheduling, laboratory reporting, billing and ledger workflows, ward and operating-theatre booking, subscriptions, and print controls.
 
 ## Roadmap
 
@@ -276,7 +276,7 @@ For security vulnerabilities, use a private disclosure process rather than publi
 
 ## License
 
-eLAB is released under the MIT License.
+PulseForge is released under the MIT License.
 
 Copyright © 2026 **MD NASIM**.
 
@@ -284,21 +284,21 @@ See the [`LICENSE`](./LICENSE) file for the complete license text.
 
 ## Citation
 
-If you use eLAB in research, academic work, technical documentation, or another software project, please cite the repository.
+If you use PulseForge in research, academic work, technical documentation, or another software project, please cite the repository.
 
 ```bibtex
-@software{elab,
-  title = {eLAB: Open-source healthcare operations platform for hospitals and clinics},
+@software{pulseforge,
+  title = {PulseForge: Open-source healthcare operations platform for hospitals and clinics},
   author = {MD NASIM},
   version = {0.1.0},
   year = {2026},
-  url = {https://github.com/nasimubd/ePATNER-eLAB}
+  url = {https://github.com/nasimubd/PulseForge}
 }
 ```
 
 ## Project
 
-**eLAB** — Healthcare Operations Platform
+**PulseForge** — Healthcare Operations Platform
 
 Developed and maintained by [MD NASIM](https://github.com/nasimubd).
 
