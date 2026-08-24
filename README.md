@@ -4,6 +4,7 @@
 [![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20.svg?logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4.svg?logo=php&logoColor=white)](https://www.php.net)
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?logo=git&logoColor=white)](https://github.com/nasimubd/PulseForge/releases)
+[![Conventional Commits](https://img.shields.io/badge/commits-conventional-fe5196.svg)](https://www.conventionalcommits.org/)
 
 **Open-source healthcare operations platform for hospitals, clinics, diagnostic centres, and other care facilities.**
 
